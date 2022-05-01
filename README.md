@@ -2,10 +2,17 @@
 
 ## Voxel Iron Man in main_ironman.py
 <p align="center">
-<img src="images/ironman.jpg" width="75%"></img>
+<img src="images/ironman1.jpg" width="75%"></img>
 </p>
 
 <p align="center">
 <img src="images/ironman2.jpg" width="75%"></img>
 </p>
 
+<p align="center">
+<img src="images/ironman3.jpg" width="75%"></img>
+</p>
+
+<p align="center">
+<img src="images/ironman4.jpg" width="75%"></img>
+</p>
