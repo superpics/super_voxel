@@ -47,8 +47,8 @@ def initialize_voxels():
     process_box(vec3(-2, 3 + h, 0), 2, 2, 2, vec3(0.784, 0.65, 0.254), 1, True)
     process_box(vec3(-1, 2 + h, 0), 1, 1, 2, vec3(0.784, 0.65, 0.254), 1, True)
     # 火焰
-    process_box(vec3(-2, 0.6 * h, 0), 1, h * 0.4, 1, vec3(1, 1, 1), 2, True)
-    process_box(vec3(-4, 5, 0), 1, 5 + h - 5, 1, vec3(1, 1, 1), 2, True)
+    process_box(vec3(-2, 5, 0), 1, h - 5, 1, vec3(1, 1, 1), 2, True)
+    process_box(vec3(-4, 0.4 * h + 5, 0), 1, h * 0.6, 1, vec3(1, 1, 1), 2, True)
     # 身体
     process_box(vec3(-3, 5 + h, 0), 4, 5, 2, vec3(0.9, 0.1, 0.1), 1, True)
     process_box(vec3(0, 5 + h, 2), 2, 5, 1, vec3(0.9, 0.1, 0.1), 1, True)
