@@ -4,7 +4,7 @@
 
 ## inspiration
 <p align="center">
-<img src="images/ironman1.jpg" width="75%"></img>
+<img src="images/iron_man_fly.jpg" width="75%"></img>
 </p>
 
 ## Voxel Iron Man in main_ironman.py
