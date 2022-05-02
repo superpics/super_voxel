@@ -37,7 +37,7 @@ def make_dirt(base, n):
 
 @ti.kernel
 def initialize_voxels():
-    h = 30
+    h = 15
     # process_box(vec3(0, 0, 0), 1, 1, 1, vec3(1, 0, 0), 1, False)
     # process_box(vec3(0, 1, 0), 1, 1, 1, vec3(0, 1, 0), 1, False)
 
@@ -48,7 +48,7 @@ def initialize_voxels():
     process_box(vec3(-1, 2 + h, 0), 1, 1, 2, vec3(0.784, 0.65, 0.254), 1, True)
     # 火焰
     process_box(vec3(-2, 0.6 * h, 0), 1, h * 0.4, 1, vec3(1, 1, 1), 2, True)
-    process_box(vec3(-4, 8, 0), 1, 5 + h - 8, 1, vec3(1, 1, 1), 2, True)
+    process_box(vec3(-4, 5, 0), 1, 5 + h - 5, 1, vec3(1, 1, 1), 2, True)
     # 身体
     process_box(vec3(-3, 5 + h, 0), 4, 5, 2, vec3(0.9, 0.1, 0.1), 1, True)
     process_box(vec3(0, 5 + h, 2), 2, 5, 1, vec3(0.9, 0.1, 0.1), 1, True)
@@ -70,7 +70,7 @@ def initialize_voxels():
     # 眼睛
     process_box(vec3(-2, 15 + h, 4), 2, 1, 1, vec3(1, 1, 1), 2, True)
 
-    make_dirt(0, 50)
+    make_dirt(0, 35)
 
 
 initialize_voxels()
