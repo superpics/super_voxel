@@ -2,12 +2,16 @@
 
 
 
-## inspiration
+
+
+## Voxel Iron Man in main_ironman.py
+
+### inspiration
 <p align="center">
 <img src="images/iron_man_fly.jpg" width="40%"></img>
 </p>
 
-## Voxel Iron Man in main_ironman.py
+### demo
 <p align="center">
 <img src="images/ironman1.jpg" width="75%"></img>
 </p>
@@ -16,11 +20,10 @@
 <img src="images/ironman2.jpg" width="75%"></img>
 </p>
 
-<p align="center">
-<img src="images/ironman5.jpg" width="75%"></img>
-</p>
+
+
+## Canton Tower in main_canton_tower.py
 
 <p align="center">
-<img src="images/ironman6.jpg" width="75%"></img>
+<img src="images/canton_tower.jpg" width="75%"></img>
 </p>
-
