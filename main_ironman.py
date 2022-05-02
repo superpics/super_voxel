@@ -3,8 +3,8 @@ import taichi as ti
 from taichi.math import *
 
 scene = Scene(voxel_edges=0, exposure=1)
-scene.set_floor(-0.05, (0.87, 0.87, 0.87))
-scene.set_background_color((0.87, 0.87, 0.87))
+scene.set_floor(-0.05, (214/255, 186/255, 102/255))
+scene.set_background_color((214/255, 186/255, 102/255))
 scene.set_directional_light((1, 1, 1), 1, (1, 1, 1))
 
 
@@ -67,7 +67,7 @@ def initialize_voxels():
     process_box(vec3(-1, 10 + h, 3), 2, 1, 2, vec3(0.83, 0.72, 0.4), 1, True)
     # 嘴巴
     process_box(vec3(-1, 11 + h, 3), 2, 1, 2, vec3(0.733, 0.596, 0.188), 1, True)
-    # 眼镜
+    # 眼睛
     process_box(vec3(-2, 15 + h, 4), 2, 1, 1, vec3(1, 1, 1), 2, True)
 
     make_dirt(0, 50)
