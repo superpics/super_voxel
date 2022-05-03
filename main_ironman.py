@@ -16,10 +16,10 @@ def process_box(src, x_size, y_size, z_size, color, mat, symmetric):
             scene.set_voxel(ivec3(-x, y, z), mat, color)
 
 @ti.func
-def process_header(x_source: int, y_source: int, z_source: int, x_size: int, y_size: int, z_size: int):
+def process_header(x_src: int, y_src: int, z_src: int, x_size: int, y_size: int, z_size: int):
     for i in range(4):
-        for x, y, z in ti.ndrange((x_source, x_source + x_size), (y_source, y_source + y_size), (z_source, z_source + z_size)):
-            center = ivec3((x_size / 2 + x_source), (y_size / 2 + y_source + i), (z_size / 2 + z_source))
+        for x, y, z in ti.ndrange((x_src, x_src + x_size), (y_src, y_src + y_size), (z_src, z_src + z_size)):
+            center = ivec3((x_size / 2 + x_src), (y_size / 2 + y_src + i), (z_size / 2 + z_src))
             if distance(center, ivec3(x, y + i, z)) < 4:
                 scene.set_voxel(ivec3(x, y + i, z), 1, vec3(0.83, 0.72, 0.4) if 4 == z else vec3(0.9, 0.1, 0.1))
 
@@ -30,8 +30,10 @@ def make_dirt():
         if 10 < distance(ivec3(0, y, 0), ivec3(x, y, z)) < 35:
             if -4 <= ((x * x) / 200) + ((z * z) / 200) - ((y * y) / 10) <= -3:
                 if ti.random() > 0.9:
-                    scene.set_voxel(ivec3(x, y - y_offset, z), 1, vec3(1, 1, 1))
-
+                    if ti.random() > 0.8:
+                        scene.set_voxel(ivec3(x, y - y_offset, z), 1, vec3(0.5, 0.5, 0.5))
+                    else:
+                        scene.set_voxel(ivec3(x, y - y_offset, z), 1, vec3(1, 1, 1))
 @ti.kernel
 def initialize_voxels():
     h = 15
