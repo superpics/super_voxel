@@ -3,9 +3,9 @@ import taichi as ti
 from taichi.math import *
 
 scene = Scene(voxel_edges=0, exposure=2)
-scene.set_floor(0, (214/255, 186/255, 102/255))
-scene.set_background_color((214/255, 186/255, 102/255))
-scene.set_directional_light((1, 1, 1), 1, (0.5, 0.5, 0.5))
+scene.set_floor(-50, (214/255, 186/255, 102/255))
+scene.set_background_color((100/255, 100/255, 100/255))
+scene.set_directional_light((1, 1, 1), 0.1, (0.5, 0.5, 0.5))
 
 
 @ti.func
@@ -27,9 +27,9 @@ def process_header(x_src: int, y_src: int, z_src: int, x_size: int, y_size: int,
 def make_dirt():
     y_offset = 6
     for x, y, z in ti.ndrange((-64, 64), (0, 30), (-64, 64)):
-        if 10 < distance(ivec3(0, y, 0), ivec3(x, y, z)) < 35:
-            if -4 <= ((x * x) / 200) + ((z * z) / 200) - ((y * y) / 10) <= -3:
-                if ti.random() > 0.9:
+        if 15 < distance(ivec3(0, y, 0), ivec3(x, y, z)) < 64:
+            if -4 <= ((x * x) / 100) + ((z * z) / 100) - ((y * y) / 10) <= -3:
+                if ti.random() > 0.90:
                     if ti.random() > 0.8:
                         scene.set_voxel(ivec3(x, y - y_offset, z), 1, vec3(0.5, 0.5, 0.5))
                     else:
@@ -46,8 +46,8 @@ def initialize_voxels():
     process_box(vec3(-2, 3 + h, 0), 2, 2, 2, vec3(0.784, 0.65, 0.254), 1, True)
     process_box(vec3(-1, 2 + h, 0), 1, 1, 2, vec3(0.784, 0.65, 0.254), 1, True)
     # 火焰
-    process_box(vec3(-2, 5, 0), 1, h - 5, 1, vec3(1, 1, 1), 2, True)
-    process_box(vec3(-4, 0.4 * h + 5, 0), 1, h * 0.6, 1, vec3(1, 1, 1), 2, True)
+    process_box(vec3(-2, 5, 0), 1, h - 5, 1, vec3(230 / 255, 192 / 255, 90 / 255), 2, True)
+    process_box(vec3(-4, 0.4 * h + 5, 0), 1, h * 0.6, 1, vec3(230 / 255, 192 / 255, 90 / 255), 2, True)
     # 身体
     process_box(vec3(-3, 5 + h, 0), 4, 5, 2, vec3(0.9, 0.1, 0.1), 1, True)
     process_box(vec3(0, 5 + h, 2), 2, 5, 1, vec3(0.9, 0.1, 0.1), 1, True)
@@ -70,6 +70,16 @@ def initialize_voxels():
     process_box(vec3(-2, 15 + h, 4), 2, 1, 1, vec3(1, 1, 1), 2, True)
 
     make_dirt()
+
+    for x, y, z in ti.ndrange((-64, 64), (-64, 64), (-64, 64)):
+        h = 7 * ti.sin(ti.cast(x - 64, ti.f32) / 128 * 3.14) * ti.sin(ti.cast(y + 65, ti.f32) / 128 * 3.14) + 8
+        if z < h:
+
+            scene.set_voxel(ivec3(y, z, x), 1, vec3(141 / 255, 113 / 255, 17 / 255) + (ti.random() * 0.3))
+            # if ti.random() > 0.7:
+            #     scene.set_voxel(ivec3(y, z, x), 1, vec3(141 / 255, 113 / 255, 17 / 255))
+            # else:
+            #     scene.set_voxel(ivec3(y, z, x), 1, vec3(140 / 255, 110 / 255, 40 / 255))
 
 
 initialize_voxels()
